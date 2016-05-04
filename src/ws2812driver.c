@@ -21,9 +21,8 @@
  ====================================================================================================================================
  */
 
-void dioda(uint8_t R, uint8_t G, uint8_t B){
+uint8_t dioda(uint8_t R, uint8_t G, uint8_t B, uint8_t buf[]){
 	
-	uint8_t frame[8];
 	uint8_t z,y,i;
 	uint32_t RGB;
 	uint8_t b[3];
@@ -37,7 +36,7 @@ void dioda(uint8_t R, uint8_t G, uint8_t B){
 			
 			i--;
 		}
-		frame[z] =	(b[0] << 6)|(0 << 5)|(1 << 4)|(b[1] << 3)|(0 << 2)|(1 << 1)| b[2];
+		buf[z] =	(b[0] << 6)|(0 << 5)|(1 << 4)|(b[1] << 3)|(0 << 2)|(1 << 1)| b[2];
 
 	}
 //	for (z =0; z<8 ; z++){
@@ -47,7 +46,15 @@ void dioda(uint8_t R, uint8_t G, uint8_t B){
 //	for( z=0 ; z<8 ; z++){
 //	start_dma((uint8_t*) frame[z] , 1);
 //	}
-	start_dma((uint8_t*) frame , 8);
+//	start_dma((uint8_t*) frame , 8);
+	
+
+//	while( HAL_OK != HAL_UART_Transmit_DMA(&USART6_handle,(uint8_t*) frame, sizeof(frame)) ){
+//		usart1_WriteS(USART1, "\n\r DMA TRANSMIT \n\r");
+	
+		//}
+	
+	
 }
 /* ==================================================================================================================================
 																												Funkcja zapalania jednej doidy
@@ -121,35 +128,35 @@ void WS2812B_transcodeGRB(uint8_t green, uint8_t red, uint8_t blue)   //Przekonw
  */
 void police_effect(void){
 	
-				dioda(0,0,250);
-				dioda(0,0,0);
-				
-				HAL_Delay(50);
-				
-				dioda(0,0,0);
-				dioda(0,0,0);
-				
-				HAL_Delay(50);
+//				dioda(0,0,250);
+//				dioda(0,0,0);
+//				
+//				HAL_Delay(50);
+//				
+//				dioda(0,0,0);
+//				dioda(0,0,0);
+//				
+//				HAL_Delay(50);
 
-				dioda(0,0,250);
-				dioda(0,0,0);
-				
-				HAL_Delay(50);
-				
-				dioda(0,0,0);
-				dioda(0,0,0);
-				
-				HAL_Delay(50);				
-				
-				dioda(0,0,250);
-				dioda(0,0,0);
-				
-				HAL_Delay(50);
-				
-				dioda(0,0,0);
-				dioda(0,0,250);	
-				
-				HAL_Delay(150);
+//				dioda(0,0,250);
+//				dioda(0,0,0);
+//				
+//				HAL_Delay(50);
+//				
+//				dioda(0,0,0);
+//				dioda(0,0,0);
+//				
+//				HAL_Delay(50);				
+//				
+//				dioda(0,0,250);
+//				dioda(0,0,0);
+//				
+//				HAL_Delay(50);
+//				
+//				dioda(0,0,0);
+//				dioda(0,0,250);	
+//				
+//				HAL_Delay(150);
 }
 /* ==================================================================================================================================
 																												END OF FILE

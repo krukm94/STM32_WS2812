@@ -1,6 +1,6 @@
 Dependencies for Project 'STM32_MK', Target 'STM32_MK': (DO NOT MODIFY !)
-F (.\src\main.c)(0x5728FD1B)(-c --cpu Cortex-M7.fp.sp --fpu=FPv4-SP -D__EVAL -g -O0 --apcs=interwork --split_sections -I.\hal_lib -I.\lib -I.\src -I.\hal_lib\Inc -I.\hal_lib\Inc\Legacy-I C:\Users\£ysol\Desktop\Organizer\Studia\stm32\Projekty_STMy\STM32_MK\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515" -DSTM32F746xx -DUSE_HAL_DRIVER -DSTM32F746xx -DSTM32F7_DISCOVERY-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
-I (src\init.h)(0x5718E61D)
+F (.\src\main.c)(0x5729F349)(-c --cpu Cortex-M7.fp.sp --fpu=FPv4-SP -D__EVAL -g -O0 --apcs=interwork --split_sections -I.\hal_lib -I.\lib -I.\src -I.\hal_lib\Inc -I.\hal_lib\Inc\Legacy-I C:\Users\£ysol\Desktop\Organizer\Studia\stm32\Projekty_STMy\STM32_MK\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515" -DSTM32F746xx -DUSE_HAL_DRIVER -DSTM32F746xx -DSTM32F7_DISCOVERY-o .\objects\main.o --omf_browse .\objects\main.crf --depend .\objects\main.d)
+I (src\init.h)(0x5729DA6C)
 I (.\hal_lib\Inc\stm32f7xx_hal.h)(0x564AF71C)
 I (.\lib\stm32f7xx_hal_conf.h)(0x562A7A47)
 I (.\hal_lib\Inc\stm32f7xx_hal_rcc.h)(0x564AF719)
@@ -52,12 +52,12 @@ I (.\hal_lib\Inc\stm32f7xx_hal_usart.h)(0x564AF71A)
 I (.\hal_lib\Inc\stm32f7xx_hal_usart_ex.h)(0x564AF71D)
 I (.\hal_lib\Inc\stm32f7xx_hal_hcd.h)(0x564AF71C)
 I (.\hal_lib\Inc\stm32f7xx_ll_usb.h)(0x564AF719)
-I (src\discovery_boards.h)(0x5728F1CF)
-I (src\uart.h)(0x5728F611)
+I (src\discovery_boards.h)(0x5729D68E)
+I (src\uart.h)(0x5729E15D)
 I (src\itoa.h)(0x566B23FE)
-I (src\ws2812driver.h)(0x5718E5ED)
-F (.\src\init.c)(0x5728EA64)(-c --cpu Cortex-M7.fp.sp --fpu=FPv4-SP -D__EVAL -g -O0 --apcs=interwork --split_sections -I.\hal_lib -I.\lib -I.\src -I.\hal_lib\Inc -I.\hal_lib\Inc\Legacy-I C:\Users\£ysol\Desktop\Organizer\Studia\stm32\Projekty_STMy\STM32_MK\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515" -DSTM32F746xx -DUSE_HAL_DRIVER -DSTM32F746xx -DSTM32F7_DISCOVERY-o .\objects\init.o --omf_browse .\objects\init.crf --depend .\objects\init.d)
-I (src\init.h)(0x5718E61D)
+I (src\ws2812driver.h)(0x5729F0C3)
+F (.\src\init.c)(0x5729E354)(-c --cpu Cortex-M7.fp.sp --fpu=FPv4-SP -D__EVAL -g -O0 --apcs=interwork --split_sections -I.\hal_lib -I.\lib -I.\src -I.\hal_lib\Inc -I.\hal_lib\Inc\Legacy-I C:\Users\£ysol\Desktop\Organizer\Studia\stm32\Projekty_STMy\STM32_MK\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515" -DSTM32F746xx -DUSE_HAL_DRIVER -DSTM32F746xx -DSTM32F7_DISCOVERY-o .\objects\init.o --omf_browse .\objects\init.crf --depend .\objects\init.d)
+I (src\init.h)(0x5729DA6C)
 I (.\hal_lib\Inc\stm32f7xx_hal.h)(0x564AF71C)
 I (.\lib\stm32f7xx_hal_conf.h)(0x562A7A47)
 I (.\hal_lib\Inc\stm32f7xx_hal_rcc.h)(0x564AF719)
@@ -109,13 +109,13 @@ I (.\hal_lib\Inc\stm32f7xx_hal_usart.h)(0x564AF71A)
 I (.\hal_lib\Inc\stm32f7xx_hal_usart_ex.h)(0x564AF71D)
 I (.\hal_lib\Inc\stm32f7xx_hal_hcd.h)(0x564AF71C)
 I (.\hal_lib\Inc\stm32f7xx_ll_usb.h)(0x564AF719)
-I (src\discovery_boards.h)(0x5728F1CF)
-I (src\uart.h)(0x5728F611)
+I (src\discovery_boards.h)(0x5729D68E)
+I (src\uart.h)(0x5729E15D)
 I (src\itoa.h)(0x566B23FE)
-I (src\ws2812driver.h)(0x5718E5ED)
-F (.\src\uart.c)(0x57290A3C)(-c --cpu Cortex-M7.fp.sp --fpu=FPv4-SP -D__EVAL -g -O0 --apcs=interwork --split_sections -I.\hal_lib -I.\lib -I.\src -I.\hal_lib\Inc -I.\hal_lib\Inc\Legacy-I C:\Users\£ysol\Desktop\Organizer\Studia\stm32\Projekty_STMy\STM32_MK\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515" -DSTM32F746xx -DUSE_HAL_DRIVER -DSTM32F746xx -DSTM32F7_DISCOVERY-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
-I (src\uart.h)(0x5728F611)
-I (src\init.h)(0x5718E61D)
+I (src\ws2812driver.h)(0x5729F0C3)
+F (.\src\uart.c)(0x5729E3B5)(-c --cpu Cortex-M7.fp.sp --fpu=FPv4-SP -D__EVAL -g -O0 --apcs=interwork --split_sections -I.\hal_lib -I.\lib -I.\src -I.\hal_lib\Inc -I.\hal_lib\Inc\Legacy-I C:\Users\£ysol\Desktop\Organizer\Studia\stm32\Projekty_STMy\STM32_MK\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515" -DSTM32F746xx -DUSE_HAL_DRIVER -DSTM32F746xx -DSTM32F7_DISCOVERY-o .\objects\uart.o --omf_browse .\objects\uart.crf --depend .\objects\uart.d)
+I (src\uart.h)(0x5729E15D)
+I (src\init.h)(0x5729DA6C)
 I (.\hal_lib\Inc\stm32f7xx_hal.h)(0x564AF71C)
 I (.\lib\stm32f7xx_hal_conf.h)(0x562A7A47)
 I (.\hal_lib\Inc\stm32f7xx_hal_rcc.h)(0x564AF719)
@@ -167,15 +167,15 @@ I (.\hal_lib\Inc\stm32f7xx_hal_usart.h)(0x564AF71A)
 I (.\hal_lib\Inc\stm32f7xx_hal_usart_ex.h)(0x564AF71D)
 I (.\hal_lib\Inc\stm32f7xx_hal_hcd.h)(0x564AF71C)
 I (.\hal_lib\Inc\stm32f7xx_ll_usb.h)(0x564AF719)
-I (src\discovery_boards.h)(0x5728F1CF)
+I (src\discovery_boards.h)(0x5729D68E)
 I (src\itoa.h)(0x566B23FE)
-I (src\ws2812driver.h)(0x5718E5ED)
+I (src\ws2812driver.h)(0x5729F0C3)
 F (.\src\itoa.c)(0x566B23F5)(-c --cpu Cortex-M7.fp.sp --fpu=FPv4-SP -D__EVAL -g -O0 --apcs=interwork --split_sections -I.\hal_lib -I.\lib -I.\src -I.\hal_lib\Inc -I.\hal_lib\Inc\Legacy-I C:\Users\£ysol\Desktop\Organizer\Studia\stm32\Projekty_STMy\STM32_MK\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515" -DSTM32F746xx -DUSE_HAL_DRIVER -DSTM32F746xx -DSTM32F7_DISCOVERY-o .\objects\itoa.o --omf_browse .\objects\itoa.crf --depend .\objects\itoa.d)
 I (C:\Keil_v5\ARM\ARMCC\include\stdint.h)(0x54C2A828)
 I (src\itoa.h)(0x566B23FE)
-F (.\src\ws2812driver.c)(0x572908DB)(-c --cpu Cortex-M7.fp.sp --fpu=FPv4-SP -D__EVAL -g -O0 --apcs=interwork --split_sections -I.\hal_lib -I.\lib -I.\src -I.\hal_lib\Inc -I.\hal_lib\Inc\Legacy-I C:\Users\£ysol\Desktop\Organizer\Studia\stm32\Projekty_STMy\STM32_MK\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515" -DSTM32F746xx -DUSE_HAL_DRIVER -DSTM32F746xx -DSTM32F7_DISCOVERY-o .\objects\ws2812driver.o --omf_browse .\objects\ws2812driver.crf --depend .\objects\ws2812driver.d)
-I (src\ws2812driver.h)(0x5718E5ED)
-I (src\init.h)(0x5718E61D)
+F (.\src\ws2812driver.c)(0x5729F11E)(-c --cpu Cortex-M7.fp.sp --fpu=FPv4-SP -D__EVAL -g -O0 --apcs=interwork --split_sections -I.\hal_lib -I.\lib -I.\src -I.\hal_lib\Inc -I.\hal_lib\Inc\Legacy-I C:\Users\£ysol\Desktop\Organizer\Studia\stm32\Projekty_STMy\STM32_MK\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515" -DSTM32F746xx -DUSE_HAL_DRIVER -DSTM32F746xx -DSTM32F7_DISCOVERY-o .\objects\ws2812driver.o --omf_browse .\objects\ws2812driver.crf --depend .\objects\ws2812driver.d)
+I (src\ws2812driver.h)(0x5729F0C3)
+I (src\init.h)(0x5729DA6C)
 I (.\hal_lib\Inc\stm32f7xx_hal.h)(0x564AF71C)
 I (.\lib\stm32f7xx_hal_conf.h)(0x562A7A47)
 I (.\hal_lib\Inc\stm32f7xx_hal_rcc.h)(0x564AF719)
@@ -227,8 +227,8 @@ I (.\hal_lib\Inc\stm32f7xx_hal_usart.h)(0x564AF71A)
 I (.\hal_lib\Inc\stm32f7xx_hal_usart_ex.h)(0x564AF71D)
 I (.\hal_lib\Inc\stm32f7xx_hal_hcd.h)(0x564AF71C)
 I (.\hal_lib\Inc\stm32f7xx_ll_usb.h)(0x564AF719)
-I (src\discovery_boards.h)(0x5728F1CF)
-I (src\uart.h)(0x5728F611)
+I (src\discovery_boards.h)(0x5729D68E)
+I (src\uart.h)(0x5729E15D)
 I (src\itoa.h)(0x566B23FE)
 F (.\lib\startup_stm32f746xx.s)(0x564AF3C1)(--cpu Cortex-M7.fp.sp --fpu=FPv4-SP --pd "__EVAL SETA 1" -g --apcs=interwork -I C:\Users\£ysol\Desktop\Organizer\Studia\stm32\Projekty_STMy\STM32_MK\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\CMSIS\Include--pd "__UVISION_VERSION SETA 515" --pd "STM32F746xx SETA 1"--list .\listings\startup_stm32f746xx.lst --xref -o .\objects\startup_stm32f746xx.o --depend .\objects\startup_stm32f746xx.d)
 F (.\lib\system_stm32f7xx.c)(0x564AF6FE)(-c --cpu Cortex-M7.fp.sp --fpu=FPv4-SP -D__EVAL -g -O0 --apcs=interwork --split_sections -I.\hal_lib -I.\lib -I.\src -I.\hal_lib\Inc -I.\hal_lib\Inc\Legacy-I C:\Users\£ysol\Desktop\Organizer\Studia\stm32\Projekty_STMy\STM32_MK\RTE-I C:\Keil_v5\ARM\PACK\Keil\STM32F7xx_DFP\2.2.0\Drivers\CMSIS\Device\ST\STM32F7xx\Include-I C:\Keil_v5\ARM\CMSIS\Include-D__UVISION_VERSION="515" -DSTM32F746xx -DUSE_HAL_DRIVER -DSTM32F746xx -DSTM32F7_DISCOVERY-o .\objects\system_stm32f7xx.o --omf_browse .\objects\system_stm32f7xx.crf --depend .\objects\system_stm32f7xx.d)
