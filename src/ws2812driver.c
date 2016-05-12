@@ -15,9 +15,7 @@
 																												Funkcja zapalania jednej doidy
 																												Jezeli sterujemy wiecej niz jedna to tyle ile diód
 																												tyle razy wywolujemy ta funkcjie
-
-																												Funkcja wnosi opóznienia 2,3 us
-									
+																												AUTOR: MK
  ====================================================================================================================================
  */
 
@@ -39,29 +37,14 @@ uint8_t dioda(uint8_t R, uint8_t G, uint8_t B, uint8_t buf[]){
 		buf[z] =	(b[0] << 6)|(0 << 5)|(1 << 4)|(b[1] << 3)|(0 << 2)|(1 << 1)| b[2];
 
 	}
-//	for (z =0; z<8 ; z++){
-//		while(!(USART6-> ISR & USART_ISR_TXE));
-//		USART6 -> TDR = frame[z];
-//	}
-//	for( z=0 ; z<8 ; z++){
-//	start_dma((uint8_t*) frame[z] , 1);
-//	}
-//	start_dma((uint8_t*) frame , 8);
-	
 
-//	while( HAL_OK != HAL_UART_Transmit_DMA(&USART6_handle,(uint8_t*) frame, sizeof(frame)) ){
-//		usart1_WriteS(USART1, "\n\r DMA TRANSMIT \n\r");
-	
-		//}
-	
 	
 }
 /* ==================================================================================================================================
 																												Funkcja zapalania jednej doidy
 																												Jezeli sterujemy wiecej niz jedna to tyle ile diód
 																												tyle razy wywolujemy ta funkcjie
-																												Funkcja ta nie wnosi opóznienia programu
-									
+																												AUTOR: AB
  ====================================================================================================================================
  */
 void WS2812B_transcodeGRB(uint8_t green, uint8_t red, uint8_t blue)   //Przekonwertuj podany kolor w formacie RGB na ciag 8 bajtów dla USART  

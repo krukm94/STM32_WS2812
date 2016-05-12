@@ -16,6 +16,7 @@ UART_HandleTypeDef USART1_handle;
 DMA_HandleTypeDef	 DMA_handle;
 
 // ----------------------------> VARIABLES
+extern volatile uint8_t flag_usart_tc; 
 
 		
 /* ==================================================================================================================================
@@ -23,14 +24,16 @@ DMA_HandleTypeDef	 DMA_handle;
 																												USART6 INIT 
 																												That init has inverted logic
 																										TX PIN PC 6 | RX PIN PC7
+																										
+																										USART is use as WS2812 deiver
  ====================================================================================================================================
  */	
 uint8_t usart6_init(USART_TypeDef 	*USARTx,
-										uint32_t			BAUDRATE,
-										GPIO_TypeDef 	*GPIOx,					//PORT TX i RX pin's np. GPIOA
-										uint16_t 			USART_PIN_TX, 
-										uint16_t 			USART_PIN_RX,
-										uint32_t			USART_MODE) {
+										uint32_t				BAUDRATE,
+										GPIO_TypeDef 		*GPIOx,					//PORT TX i RX pin's np. GPIOA
+										uint16_t 				USART_PIN_TX, 
+										uint16_t 				USART_PIN_RX,
+										uint32_t				USART_MODE) {
 
 	
 	//zmienna do zwracania statusu funkcji
@@ -42,49 +45,44 @@ uint8_t usart6_init(USART_TypeDef 	*USARTx,
 	usart_status = 0x01;
  
 	/* Enable GPIO clock */
-	USARTx_GPIO_CLK_ENABLE();
+	USART6_GPIO_CLK_ENABLE();
 
 	// Enable clock for USART1 peripheral
-	USARTx_CLK_ENABLE();
+	USART6_CLK_ENABLE();
+	
+	/* Configure USART Tx as alternate function */
+	GPIO_InitStruct.Pin				= USART_PIN_TX;
+	GPIO_InitStruct.Mode	  	= GPIO_MODE_AF_PP;
+	GPIO_InitStruct.Pull 			= GPIO_PULLDOWN;
+	GPIO_InitStruct.Speed 		= GPIO_SPEED_FAST;
+	GPIO_InitStruct.Alternate = GPIO_AF_USART6;
+	
+	HAL_GPIO_Init(GPIOx, &GPIO_InitStruct);
 	
 	// Inwersja Start i Stop Bitu
 	USART6_handle.AdvancedInit.AdvFeatureInit = UART_ADVFEATURE_TXINVERT_INIT | UART_ADVFEATURE_DATAINVERT_INIT
-																					 | UART_ADVFEATURE_MSBFIRST_INIT;
+																					  | UART_ADVFEATURE_MSBFIRST_INIT;
 	USART6_handle.AdvancedInit.TxPinLevelInvert = UART_ADVFEATURE_TXINV_ENABLE;
 	USART6_handle.AdvancedInit.DataInvert = UART_ADVFEATURE_DATAINV_ENABLE;
 	USART6_handle.AdvancedInit.MSBFirst = UART_ADVFEATURE_MSBFIRST_ENABLE;
 
-	/* Configure USART Tx as alternate function */
-	GPIO_InitStruct.Pin = USART_PIN_TX;
-	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
-	GPIO_InitStruct.Alternate = GPIO_AF_USART6;
-	HAL_GPIO_Init(GPIOx, &GPIO_InitStruct);
-	
-
-	//UART handle
 	USART6_handle.Instance = USARTx;
 	USART6_handle.Init.BaudRate = BAUDRATE;
 	USART6_handle.Init.WordLength = USART_WORDLENGTH_7B;
 	USART6_handle.Init.StopBits = USART_STOPBITS_1;
 	USART6_handle.Init.Parity = USART_PARITY_NONE;
 	USART6_handle.Init.Mode = USART_MODE;
-	USART6_handle.hdmatx = &DMA_handle;
+	//USART6_handle.hdmatx = &DMA_handle;
 	
 	//Configuration DMA 
 	dma_conf();
 	
-	//SET DMA ON FOR UART
-	USART6 -> CR3 |= UART_DMA_TX_ENABLE;
+	//SET INTERRUPT FROM USART6
+	__HAL_USART_ENABLE_IT(&USART6_handle , USART_IT_TC);
 	
 	//Init
 	usart_status = HAL_UART_Init(&USART6_handle);
 	
-
-	//USART enable	
-	__HAL_UART_ENABLE(&USART6_handle);
-
 	#ifdef USART_IT_RX_ON
 			USART6 -> CR1 |= USART_CR1_RXNEIE;
 	#endif
@@ -123,28 +121,26 @@ uint8_t usart1_init(USART_TypeDef 	*USARTx,
 	
 
 	/* Configure USART Tx as alternate function */
-	GPIO_InitStruct.Pin = USART_PIN_TX;
-	GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
-	GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-	GPIO_InitStruct.Speed = GPIO_SPEED_FAST;
+	GPIO_InitStruct.Pin 			= USART_PIN_TX;
+	GPIO_InitStruct.Mode		  = GPIO_MODE_AF_PP;
+	GPIO_InitStruct.Pull 			= GPIO_PULLDOWN;
+	GPIO_InitStruct.Speed			= GPIO_SPEED_FAST;
 	GPIO_InitStruct.Alternate = GPIO_AF_USART1;
+	
 	HAL_GPIO_Init(GPIOx, &GPIO_InitStruct);
 	
 
 	//UART handle
-	USART1_handle.Instance = USARTx;
-	USART1_handle.Init.BaudRate = BAUDRATE;
-	USART1_handle.Init.WordLength = USART_WORDLENGTH_8B;
-	USART1_handle.Init.StopBits = USART_STOPBITS_1;
-	USART1_handle.Init.Parity = USART_PARITY_NONE;
-	USART1_handle.Init.Mode = USART_MODE;
+	USART1_handle.Instance				  = USARTx;
+	USART1_handle.Init.BaudRate 	  = BAUDRATE;
+	USART1_handle.Init.WordLength 	= USART_WORDLENGTH_8B;
+	USART1_handle.Init.StopBits 		= USART_STOPBITS_1;
+	USART1_handle.Init.Parity 			= USART_PARITY_NONE;
+	USART1_handle.Init.Mode 				= USART_MODE;
 
 	//Init
 	usart_status = HAL_UART_Init(&USART1_handle);
 	
-
-	//USART enable	
-	__HAL_UART_ENABLE(&USART1_handle);
 
 	#ifdef USART_IT_RX_ON
 			USART1 -> CR1 |= USART_CR1_RXNEIE;
@@ -160,31 +156,33 @@ uint8_t usart1_init(USART_TypeDef 	*USARTx,
  ====================================================================================================================================
  */	
 
-void dma_conf(){
+void dma_conf(void){
 	
 	//SET RCC ON FOR DMA
 	DMA2_CLK_ENABLE();
 	 
 	//FILL OF STRUCTURE TO INIT DMA
 	DMA_handle.Instance 								= DMA2_Stream6;
-	DMA_handle.Init.Channel 						= DMA_CHANNEL_5;						//SELECT CHANNEL
-	DMA_handle.Init.Direction 					= DMA_MEMORY_TO_PERIPH;     //CONFIGURE THE TRANSFER DIRECTION
-	DMA_handle.Init.MemInc 							= DMA_MINC_ENABLE;					//SET INCREMENTATION ON FOR DMA
-	DMA_handle.Init.PeriphInc 					= DMA_PINC_DISABLE;					//DISABLE PERIPHAL INCREMENTATION
-	DMA_handle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;			//Specifies the Peripheral data width
-	DMA_handle.Init.MemDataAlignment	  = DMA_MDATAALIGN_BYTE;			//Specifies the Memory data width.
-	DMA_handle.Init.Mode 								= DMA_NORMAL;								//SER NORMAL MODE FOR DMA
-	DMA_handle.Init.Priority 						= DMA_PRIORITY_VERY_HIGH;		//
-	DMA_handle.Init.FIFOMode 						= DMA_FIFOMODE_DISABLE;			//
+	DMA_handle.Init.Channel 						= DMA_CHANNEL_5;					//SELECT CHANNEL
+	DMA_handle.Init.Direction 					= DMA_MEMORY_TO_PERIPH;   //CONFIGURE THE TRANSFER DIRECTION
+	DMA_handle.Init.MemInc 							= DMA_MINC_ENABLE;				//SET INCREMENTATION ON FOR DMA
+	DMA_handle.Init.PeriphInc 					= DMA_PINC_DISABLE;				//DISABLE PERIPHAL INCREMENTATION
+	DMA_handle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;		//Specifies the Peripheral data width
+	DMA_handle.Init.MemDataAlignment		= DMA_MDATAALIGN_BYTE;		//Specifies the Memory data width.
+	DMA_handle.Init.Mode 								= DMA_NORMAL;							//SET MODE FOR DMA
+	DMA_handle.Init.Priority 						= DMA_PRIORITY_VERY_HIGH;	//
+	DMA_handle.Init.FIFOMode 						= DMA_FIFOMODE_DISABLE;		//
+
 	//INIT DMA
-	HAL_DMA_Init(&DMA_handle);
+		if(!(HAL_DMA_Init(&DMA_handle))== HAL_OK){
+			//if error then
+			usart1_WriteS(USART1 , "\n\r\n\r ERROR IN DMA INIT \n\r ");
+			error();
+		}
 	
 	//Linkowanie uchwytów od USARTU i DMA
-	//__HAL_LINKDMA(&UART_handle, hdmatx, DMA_handle);	
-	//SET DMA ON
-	__HAL_DMA_ENABLE(&DMA_handle);
-
-
+	__HAL_LINKDMA(&USART6_handle, hdmatx, DMA_handle);	
+		
 }//void dma_conf(DMA_TypeDef *DMAx)
 
 
@@ -193,7 +191,7 @@ void dma_conf(){
 																												START DMA
 									
  ====================================================================================================================================
- */	
+*/	
 
 void start_dma(uint8_t *SrcAddress, uint16_t DataLength){
 	if(!(HAL_UART_Transmit_DMA(&USART6_handle, SrcAddress , DataLength) == 0)){
@@ -202,8 +200,47 @@ void start_dma(uint8_t *SrcAddress, uint16_t DataLength){
 	}
 }// void start_dma
 
+/* ==================================================================================================================================
+
+																												DMA HANDLER
+									
+ ====================================================================================================================================
+*/	
+
+/**
+* @brief This function handles DMA2 stream6 global interrupt.
+*/
+void DMA2_Stream6_IRQHandler(void)
+{
+		HAL_DMA_IRQHandler(&DMA_handle);
+
+}
 
 /* ==================================================================================================================================
+
+																												USART6 HANDLER
+									
+ ====================================================================================================================================
+*/	
+void USART6_IRQHandler(void){
+	
+		HAL_UART_IRQHandler(&USART6_handle);
+}
+
+/* ==================================================================================================================================
+
+																												UART Tx Complite CALLBACK
+									
+ ====================================================================================================================================
+ */	
+ 
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
+		
+		//flag_usart_tc = 1;
+		
+}
+ 
+/* =================================================================================================================================
 
 																												usart_Write
 									

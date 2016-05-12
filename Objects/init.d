@@ -55,5 +55,6 @@
 .\objects\init.o: src\discovery_boards.h
 .\objects\init.o: src\uart.h
 .\objects\init.o: src\init.h
+.\objects\init.o: src\timer.h
 .\objects\init.o: src\itoa.h
 .\objects\init.o: src\ws2812driver.h

@@ -56,28 +56,42 @@
 
 #ifdef STM32F7_DISCOVERY
 
+// -------------------------------------------> defines for LEDs
+
 #define LED_PORT		GPIOI
 #define LED1				GPIO_PIN_1
 #define LED_ALL			LED1
 
+// -------------------------------------------> defines for UARTs
 /* Definition of AF mode for USART6 GPIO */
 #define GPIO_AF_USART6 										GPIO_AF8_USART6
 #define GPIO_AF_USART2										GPIO_AF7_USART2
 #define GPIO_AF_USART1										GPIO_AF7_USART1
 
 /* Definition for USART clock resources */
-#define USARTx_CLK_ENABLE()								__HAL_RCC_USART6_CLK_ENABLE()
+#define USART6_CLK_ENABLE()								__HAL_RCC_USART6_CLK_ENABLE()
 #define USART1_CLK_ENABLE()								__HAL_RCC_USART1_CLK_ENABLE()
 
 /* Definition for USART GPIO clock resourses */
-#define USARTx_GPIO_CLK_ENABLE()					__HAL_RCC_GPIOC_CLK_ENABLE()
+#define USART6_GPIO_CLK_ENABLE()					__HAL_RCC_GPIOC_CLK_ENABLE()
 #define USART1_GPIO_CLK_ENABLE()					__HAL_RCC_GPIOA_CLK_ENABLE()
 
 /* Definition Interrups for USARTS */
 #define USART_IT_RX_ON										0
 
+// -------------------------------------------> defines for DMAs
 /* Definitions for DMA						 */
 #define DMA2_CLK_ENABLE()									__HAL_RCC_DMA2_CLK_ENABLE()
+
+// -------------------------------------------> defines for GPIOS
+/*PIN for time messure */
+#define GPIO_TIM_MES_PIN									GPIO_PIN_6 
+
+/*PORT for time messure */
+#define GPIO_TIM_MES_PORT									GPIOG
+
+/*RCC ON FOR GPIO FOR TIME MESSURE */
+#define RCC_ON_FOR_GPIO_TIM_MES()					__HAL_RCC_GPIOG_CLK_ENABLE()
 
 #endif	// #ifdef STM32F7_DISCOVERY
 

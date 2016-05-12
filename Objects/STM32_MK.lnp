@@ -4,6 +4,7 @@
 ".\objects\uart.o"
 ".\objects\itoa.o"
 ".\objects\ws2812driver.o"
+".\objects\timer.o"
 ".\objects\startup_stm32f746xx.o"
 ".\objects\system_stm32f7xx.o"
 ".\objects\stm32f7xx_it.o"

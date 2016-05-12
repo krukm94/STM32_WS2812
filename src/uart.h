@@ -35,8 +35,11 @@ void usart6_WriteS(USART_TypeDef *USARTx,char *s);
 void usart1_Write(USART_TypeDef *USARTx,char data);
 void usart1_WriteS(USART_TypeDef *USARTx,char *s);
 
-void dma_conf();
+void dma_conf(void);
 void start_dma(uint8_t *SrcAddress, uint16_t DataLength);
+
+//void HAL_USART_TxCpltCallback(USART_HandleTypeDef *husart);
+
  #endif // __uart_H__
  
 

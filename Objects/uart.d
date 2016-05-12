@@ -55,6 +55,7 @@
 .\objects\uart.o: .\hal_lib\Inc\stm32f7xx_ll_usb.h
 .\objects\uart.o: src\discovery_boards.h
 .\objects\uart.o: src\uart.h
+.\objects\uart.o: src\timer.h
+.\objects\uart.o: src\init.h
 .\objects\uart.o: src\itoa.h
 .\objects\uart.o: src\ws2812driver.h
-.\objects\uart.o: src\init.h
