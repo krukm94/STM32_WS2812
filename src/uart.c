@@ -16,7 +16,7 @@ UART_HandleTypeDef USART1_handle;
 DMA_HandleTypeDef	 DMA_handle;
 
 // ----------------------------> VARIABLES
-extern volatile uint8_t flag_usart_tc; 
+volatile uint8_t flag_usart_tc; 
 
 		
 /* ==================================================================================================================================
@@ -87,6 +87,10 @@ uint8_t usart6_init(USART_TypeDef 	*USARTx,
 			USART6 -> CR1 |= USART_CR1_RXNEIE;
 	#endif
 		
+	//CONFIGURATION NVIC USART6
+	HAL_NVIC_SetPriority(USART6_IRQn , 0 , 2 );
+	HAL_NVIC_EnableIRQ(USART6_IRQn);
+	
 	return usart_status;
 
 }
@@ -170,8 +174,12 @@ void dma_conf(void){
 	DMA_handle.Init.PeriphDataAlignment = DMA_PDATAALIGN_BYTE;		//Specifies the Peripheral data width
 	DMA_handle.Init.MemDataAlignment		= DMA_MDATAALIGN_BYTE;		//Specifies the Memory data width.
 	DMA_handle.Init.Mode 								= DMA_NORMAL;							//SET MODE FOR DMA
-	DMA_handle.Init.Priority 						= DMA_PRIORITY_VERY_HIGH;	//
-	DMA_handle.Init.FIFOMode 						= DMA_FIFOMODE_DISABLE;		//
+	DMA_handle.Init.Priority 						= DMA_PRIORITY_MEDIUM;		//
+	DMA_handle.Init.FIFOMode 						= DMA_FIFOMODE_ENABLE;		//
+	DMA_handle.Init.FIFOThreshold				= DMA_FIFO_THRESHOLD_FULL;//
+	DMA_handle.Init.MemBurst						= DMA_MBURST_SINGLE;			//
+	DMA_handle.Init.PeriphBurst					= DMA_PBURST_SINGLE;			//
+	
 
 	//INIT DMA
 		if(!(HAL_DMA_Init(&DMA_handle))== HAL_OK){
@@ -183,6 +191,10 @@ void dma_conf(void){
 	//Linkowanie uchwytów od USARTU i DMA
 	__HAL_LINKDMA(&USART6_handle, hdmatx, DMA_handle);	
 		
+		
+	//CONFIGURATION NVIC FOR DMA2_Stream6
+	HAL_NVIC_SetPriority(DMA2_Stream6_IRQn , 0 , 2 );
+	HAL_NVIC_EnableIRQ(DMA2_Stream6_IRQn);
 }//void dma_conf(DMA_TypeDef *DMAx)
 
 
@@ -236,8 +248,7 @@ void USART6_IRQHandler(void){
  
 void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
 		
-		//flag_usart_tc = 1;
-		
+		flag_usart_tc = 1;
 }
  
 /* =================================================================================================================================

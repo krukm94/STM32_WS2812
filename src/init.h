@@ -11,6 +11,7 @@
 #include "itoa.h"
 #include "ws2812driver.h"
 #include <stdint.h>
+
 //============================================= MY INCLUDES ===================================
 
 
@@ -18,7 +19,6 @@
 //=============================================================================================
 void init(void);
 static void SystemClock_Config(void);
-void nvic_conf(void);
 
 static void led_init(void);
 void led_on(uint16_t led);

@@ -5,45 +5,43 @@
 
 /*=============includes============== */
 #include "init.h"
-
+#include "WS2812.h"
 
 /*=============variables==============*/
 extern UART_HandleTypeDef USART6_handle;
 extern DMA_HandleTypeDef 	DMA_handle;
-extern TIM_HandleTypeDef			TIM2_HandleStruct;
+extern TIM_HandleTypeDef	TIM2_HandleStruct;
 
-volatile 	uint8_t buf_tasma[255][240];
-volatile  uint8_t buf_tasma2[240];
-volatile  uint8_t buf_short[8];
 
-volatile uint8_t flag_usart_tc;
+volatile uint8_t buf_tasma_test[240];
+volatile  uint8_t buf_short1[8];
+
 /*=============macros=================*/
-#define ILOSC_DIOD				30
+
 /*=============functions==============*/
 
 /*===============main=================*/
 
 int main(void) {
-	//static variables
-	int i,k,z = 0,x,r1 =0;
+	
+	uint8_t i,k,z = 0;
 	
 	//Initialization periphals
 	init();
+	//wygenerowanie tablicy dla diod WS2812
+	tablica();
 	
-	//Wypelnianie tablicy
-	for(r1 = 0 ; r1 < 255 ; r1++){
-		
-		for(i=0 ; i<ILOSC_DIOD ; i++){
-			dioda(r1,0,10,(uint8_t*) buf_short);
-			for(k=0 ; k<8 ; k++){
-				buf_tasma[r1][z+k] = buf_short[k];
-			}
+
+			for(i=0 ; i<30 ; i++){
+			dioda(0,0,5,(uint8_t*) buf_short1);
+				for(k=0 ; k<8 ; k++){
+					buf_tasma_test[z+k] = buf_short1[k];
+				}
 			z+=8;
-		}
-}
-	
-	//TIMER INIT
-	tim2_init();
+			}
+			
+			//TIM 3 INIT
+	tim3_init();
 	
 	while(1) {
 		

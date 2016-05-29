@@ -22,12 +22,9 @@ void init(void)
 	usart1_WriteS(USART1 , "\n\r\n\r ----> STM32F7 <---- \n\r\n\r");
 	
 	//USART6 INIt
-	usart6_init(USART6 , 2500000 , GPIOC , GPIO_PIN_6 , GPIO_PIN_7 ,USART_MODE_TX);
-
-
+	//usart6_init(USART6 , 2500000 , GPIOC , GPIO_PIN_6 , GPIO_PIN_7 ,USART_MODE_TX);
 	
-	//NVIC CONFIG
-	nvic_conf();
+
 }
 
 
@@ -148,21 +145,6 @@ void gpio_tim_mes_reset(void){
 void gpio_tim_mes_toggle(void){
 		HAL_GPIO_TogglePin(GPIO_TIM_MES_PORT, GPIO_TIM_MES_PIN );
 }
-/* ==================================================================================================================================
-
-													NVIC CONFIGURATION
-									
- ====================================================================================================================================
- */	
-void nvic_conf(void){
-	//CONFIGURATION NVIC FOR DMA2_Stream6
-	HAL_NVIC_SetPriority(DMA2_Stream6_IRQn , 0 , 0 );
-	HAL_NVIC_EnableIRQ(DMA2_Stream6_IRQn);
-	
-	//CONFIGURATION NVIC USART6
-	HAL_NVIC_SetPriority(USART6_IRQn , 0 , 1 );
-	HAL_NVIC_EnableIRQ(USART6_IRQn);
-}
 
 /* ==================================================================================================================================
 
@@ -242,3 +224,4 @@ static void SystemClock_Config(void)
  */	
 
 //
+

@@ -1,21 +1,25 @@
 /* ==================================================================================================================================
 
-																												WS2812 DIODE DRIVER SOURCE FILE
-																												Author: MK
-																												Data: 22.03.2016
+																						WS2812 DIODE DRIVER SOURCE FILE
+																						Author: MK
+																						Data: 22.03.2016
 									
  ====================================================================================================================================
  */
  
 #include "ws2812driver.h"
 
+/* ---------------------> VARIABLES */
+
+volatile 	uint8_t buf_tasma[255][240];
+volatile  uint8_t buf_short[8];
 
 /* ==================================================================================================================================
 
-																												Funkcja zapalania jednej doidy
-																												Jezeli sterujemy wiecej niz jedna to tyle ile diód
-																												tyle razy wywolujemy ta funkcjie
-																												AUTOR: MK
+																						Funkcja zapalania jednej doidy
+																						Jezeli sterujemy wiecej niz jedna to tyle ile diód
+																						tyle razy wywolujemy ta funkcjie
+																						AUTOR: MK
  ====================================================================================================================================
  */
 
@@ -37,14 +41,36 @@ uint8_t dioda(uint8_t R, uint8_t G, uint8_t B, uint8_t buf[]){
 		buf[z] =	(b[0] << 6)|(0 << 5)|(1 << 4)|(b[1] << 3)|(0 << 2)|(1 << 1)| b[2];
 
 	}
-
-	
 }
 /* ==================================================================================================================================
-																												Funkcja zapalania jednej doidy
-																												Jezeli sterujemy wiecej niz jedna to tyle ile diód
-																												tyle razy wywolujemy ta funkcjie
-																												AUTOR: AB
+																					
+																						Wypelnianie tablicy
+	
+ ====================================================================================================================================
+ */
+	
+void tablica(void){
+		//static variables
+		uint8_t r1,i,k,z = 0;
+	
+		for(r1 = 0 ; r1 < 255 ; r1++){
+
+			for(i=0 ; i<30 ; i++){
+			dioda(r1,0,0,(uint8_t*) buf_short);
+				for(k=0 ; k<8 ; k++){
+					buf_tasma[r1][z+k] = buf_short[k];
+				}
+			z+=8;
+			}
+		}	
+
+}
+
+/* ==================================================================================================================================
+																						Funkcja zapalania jednej doidy
+																						Jezeli sterujemy wiecej niz jedna to tyle ile diód
+																						tyle razy wywolujemy ta funkcjie
+																						AUTOR: AB
  ====================================================================================================================================
  */
 void WS2812B_transcodeGRB(uint8_t green, uint8_t red, uint8_t blue)   //Przekonwertuj podany kolor w formacie RGB na ciag 8 bajtów dla USART  
@@ -106,7 +132,7 @@ void WS2812B_transcodeGRB(uint8_t green, uint8_t red, uint8_t blue)   //Przekonw
 } 
 
 /* ==================================================================================================================================
-																												POLICE EFFECT
+																						POLICE EFFECT
  ====================================================================================================================================
  */
 void police_effect(void){
@@ -142,7 +168,7 @@ void police_effect(void){
 //				HAL_Delay(150);
 }
 /* ==================================================================================================================================
-																												END OF FILE
+																					END OF FILE
  ====================================================================================================================================
  */
 

@@ -18,6 +18,7 @@ uint8_t dioda(uint8_t R, uint8_t G, uint8_t B, uint8_t buf[]);
 void WS2812B_transcodeGRB(uint8_t green, uint8_t red, uint8_t blue);
 void police_effect(void);
 
+void tablica(void);
 #endif //__WS2812_H_
 
 /* ==================================================================================================================================
