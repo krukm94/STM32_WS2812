@@ -53,6 +53,7 @@
 /* Private define ------------------------------------------------------------*/
 /* Private macro -------------------------------------------------------------*/
 /* Private variables ---------------------------------------------------------*/
+volatile uint32_t application_time;
 /* Private function prototypes -----------------------------------------------*/
 /* Private functions ---------------------------------------------------------*/
 
@@ -76,10 +77,8 @@ void NMI_Handler(void)
   */
 void HardFault_Handler(void)
 {
-  /* Go to infinite loop when Hard Fault exception occurs */
-  while (1)
-  {
-  }
+  usart1_WriteS(USART1 ,"\r\n###HardFault_Handler");
+	error();
 }
 
 /**
@@ -89,10 +88,8 @@ void HardFault_Handler(void)
   */
 void MemManage_Handler(void)
 {
-  /* Go to infinite loop when Memory Manage exception occurs */
-  while (1)
-  {
-  }
+  usart1_WriteS(USART1 ,"\r\n###MemManage_Handler");
+	error();
 }
 
 /**
@@ -102,10 +99,8 @@ void MemManage_Handler(void)
   */
 void BusFault_Handler(void)
 {
-  /* Go to infinite loop when Bus Fault exception occurs */
-  while (1)
-  {
-  }
+  usart1_WriteS(USART1 ,"\r\n###BusFault_Handler");
+	error();
 }
 
 /**
@@ -115,10 +110,8 @@ void BusFault_Handler(void)
   */
 void UsageFault_Handler(void)
 {
-  /* Go to infinite loop when Usage Fault exception occurs */
-  while (1)
-  {
-  }
+  usart1_WriteS(USART1 ,"\r\n###UsageFault_Handler");
+	error();
 }
 
 /**

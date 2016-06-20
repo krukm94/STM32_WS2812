@@ -58,4 +58,3 @@
 .\objects\main.o: src\timer.h
 .\objects\main.o: src\itoa.h
 .\objects\main.o: src\ws2812driver.h
-.\objects\main.o: src\WS2812.h
