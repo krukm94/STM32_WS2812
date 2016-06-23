@@ -59,3 +59,4 @@
 .\objects\ws2812driver.o: src\timer.h
 .\objects\ws2812driver.o: src\itoa.h
 .\objects\ws2812driver.o: src\ws2812driver.h
+.\objects\ws2812driver.o: src\error.h

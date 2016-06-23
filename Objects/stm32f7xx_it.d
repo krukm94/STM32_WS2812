@@ -59,3 +59,4 @@
 .\objects\stm32f7xx_it.o: .\src\timer.h
 .\objects\stm32f7xx_it.o: .\src\itoa.h
 .\objects\stm32f7xx_it.o: .\src\ws2812driver.h
+.\objects\stm32f7xx_it.o: .\src\error.h

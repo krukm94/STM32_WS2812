@@ -59,3 +59,4 @@
 .\objects\uart.o: src\init.h
 .\objects\uart.o: src\itoa.h
 .\objects\uart.o: src\ws2812driver.h
+.\objects\uart.o: src\error.h

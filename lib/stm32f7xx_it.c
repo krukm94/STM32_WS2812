@@ -77,7 +77,7 @@ void NMI_Handler(void)
   */
 void HardFault_Handler(void)
 {
-  usart1_WriteS(USART1 ,"\r\n###HardFault_Handler");
+  usart1_WriteS("\r\n###HardFault_Handler");
 	error();
 }
 
@@ -88,7 +88,7 @@ void HardFault_Handler(void)
   */
 void MemManage_Handler(void)
 {
-  usart1_WriteS(USART1 ,"\r\n###MemManage_Handler");
+  usart1_WriteS("\r\n###MemManage_Handler");
 	error();
 }
 
@@ -99,7 +99,7 @@ void MemManage_Handler(void)
   */
 void BusFault_Handler(void)
 {
-  usart1_WriteS(USART1 ,"\r\n###BusFault_Handler");
+  usart1_WriteS("\r\n###BusFault_Handler");
 	error();
 }
 
@@ -110,7 +110,7 @@ void BusFault_Handler(void)
   */
 void UsageFault_Handler(void)
 {
-  usart1_WriteS(USART1 ,"\r\n###UsageFault_Handler");
+  usart1_WriteS("\r\n###UsageFault_Handler");
 	error();
 }
 

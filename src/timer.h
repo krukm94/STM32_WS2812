@@ -5,9 +5,11 @@
 * \date 13-06-2016
 */
 
+#ifndef __TIMER_H__
+#define __TIMER_H__
 
-#include "stm32f7xx_hal.h"
 #include "init.h"
 
 uint8_t tim3_init(void);
 
+#endif //__TIMER_H__

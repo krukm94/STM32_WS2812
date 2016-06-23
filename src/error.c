@@ -19,7 +19,7 @@ void error(void){
 	char buf[30];
 	
 	sprintf(buf, "\r\n###APPLICATION_TIME: %d [ms]",application_time); 
-	usart1_WriteS(USART1  ,buf);
+	usart1_WriteS(buf);
 	
 	while(1){
 			led_toggle(GPIO_PIN_1);

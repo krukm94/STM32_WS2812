@@ -10,19 +10,20 @@
 //======================================================================================
 void init(void)
 {
+	
 	SystemClock_Config();
-									
+	
 	HAL_Init();
 
 	led_init();
 
 	gpio_tim_mes_init();
 
-	usart1_init(USART1, 2000000 , GPIOA  , GPIO_PIN_9 , GPIO_PIN_3 , USART_MODE_TX);
+	usart1_init(2000000);
 	
-	usart1_WriteS(USART1 , "\n\r\n\r ----> STM32F7 <---- \n\r\n\r");
+	usart1_WriteS( "\n\r\n\r ----> STM32F7 <---- \n\r\n\r");
 	
-	usart6_init(USART6 , 2500000 , GPIOC , GPIO_PIN_6 , GPIO_PIN_7 ,USART_MODE_TX);
+	usart6_init(2500000);
 }
 
 //======================================================================================
@@ -55,7 +56,6 @@ void led_toggle(uint16_t led)
 	HAL_GPIO_TogglePin(LED_PORT, led);
 }
 
-
 //======================================================================================
 void gpio_tim_mes_init(void){
 		
@@ -68,7 +68,6 @@ void gpio_tim_mes_init(void){
 	gpio_struct.Pull = GPIO_PULLUP;
 	
 	HAL_GPIO_Init(GPIO_TIM_MES_PORT, &gpio_struct);
-
 }
 
 //======================================================================================

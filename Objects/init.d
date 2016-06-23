@@ -58,3 +58,4 @@
 .\objects\init.o: src\timer.h
 .\objects\init.o: src\itoa.h
 .\objects\init.o: src\ws2812driver.h
+.\objects\init.o: src\error.h
